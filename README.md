@@ -76,10 +76,10 @@ experiment.run(nbr_exp, horizon)
 experiment.plot()
 ```
 
-Using `forban`, you can easily create bandit problems and benchmark bandits algorithms using them. You can compare quantiles of the regrets or simply the expected regrets. For instance, if we were to compare two constants strategy, an explore then commit and IMED, one can get the following plot:
+Using `forban`, you can easily create bandit problems and benchmark bandit algorithms using them. You can compare quantiles of the regret or simply the expected regret. For instance, if we were to compare two constant strategies, an Explore Then Commit strategy and the IMED strategy, one can get the following plot:
 
 ![algo_comparison](./img/algo_1.png)
 
 
 ---
-For non-french speakers: *forban* is a french word for *pirate* which is of course a *bandit* that seek how to explore and exploit its environment!
+For non-French speakers: *forban* is a French word for *pirate* which is a sort of *bandit* that explores and exploits its environment!

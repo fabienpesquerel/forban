@@ -1,5 +1,5 @@
 import numpy as np
-from utils import klGaussian, klBernoulli
+from .utils import klGaussian, klBernoulli
 
 ########################################
 #                 Arms                 #

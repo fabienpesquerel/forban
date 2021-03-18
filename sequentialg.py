@@ -1,5 +1,5 @@
 import numpy as np
-from utils import *
+from .utils import *
 
 class SequentiAlg:
     def __init__(self, bandit, name="Sequential", params={'init': -np.inf}):

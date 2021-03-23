@@ -161,7 +161,7 @@ class Experiment:
                 elif k == 'quantile':
                     self.statistics[algo_idx][k] = np.quantile(regret, q=self.quantile_ticks, axis=0)
                     
-    def plot(self, save=False, complexity=True, dimensions=[(0,1)]):
+    def plot(self, save=False, complexity=True, dimensions=[(0,1)], functions=[]):
         ticks = np.arange(self.horizon)
         exp_info = f"Horizon = {self.horizon} - Nbr. of experiments = {self.nbr_exp}"
         if 'mean' in self.stats:
@@ -189,6 +189,9 @@ class Experiment:
             if complexity and (self.complexity is not None):
                 plt.plot(ticks, self.complexity*np.log(ticks+1), label="Regret lower Bound")
             
+            if len(functions) > 0:
+                for f, n in functions:
+                    plt.plot(ticks, f(ticks), label=n)
             plt.legend()
             plt.show()
             if save:
@@ -204,8 +207,10 @@ class Experiment:
             for algo_stats in self.statistics.values():
                 name = algo_stats['name']
                 std = algo_stats['std']
-                plt.plot(ticks, std, label = name + f" - R = {std[-1]:.2f}")
-                
+                plt.plot(ticks, std, label = name + f" - R = {std[-1]:.2f}")                
+            if len(functions) > 0:
+                for f, n in functions:
+                    plt.plot(ticks, f(ticks), label=n)
             plt.legend()
             plt.show()
             if save:
@@ -232,6 +237,9 @@ class Experiment:
                     ptr_2 -= 1
             if complexity and (self.complexity is not None):
                 plt.plot(ticks, self.complexity*np.log(ticks+1), label="Regret lower Bound")
+            if len(functions) > 0:
+                for f, n in functions:
+                    plt.plot(ticks, f(ticks), label=n)
             plt.legend()
             plt.show()
             if save:

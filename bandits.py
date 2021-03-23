@@ -93,7 +93,7 @@ class NormalBandit(Bandit):
             arms = [Normal(m, s) for m,s in zip(means, stds)]
         else:
             arms = [Normal(m) for m in means]
-        Bandit.__init__(self, arms, structure=structure, kullback=klGaussian, complexity=None)
+        Bandit.__init__(self, arms, structure=structure, kullback=klGaussian, complexity=complexity)
         
 class BernoulliBandit(Bandit):
     def __init__(self, means, structure="unknown", complexity=None):
@@ -101,4 +101,4 @@ class BernoulliBandit(Bandit):
         assert np.all(means >= 0) and np.all(means <= 1), \
         "Bernoulli mean should be between 0 and 1:\n(means={means})"
         arms = [Bernoulli(m) for m in means]
-        Bandit.__init__(self, arms, structure=structure, kullback=klBernoulli, complexity=None)
+        Bandit.__init__(self, arms, structure=structure, kullback=klBernoulli, complexity=complexity)
